@@ -1,6 +1,6 @@
 {
   "name": "@mikegin/react-native-superwall",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The React Native package for Superwall",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
