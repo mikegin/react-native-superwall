@@ -59,6 +59,15 @@ final class SuperwallDelegateBridge: SuperwallDelegate {
     sendEvent(withName: "paywallWillOpenDeepLink", body: data)
   }
 
+  func didRedeemLink(result: RedemptionResult) {
+    let data: [String: Any] = ["result": result.toJson()]
+    sendEvent(withName: "didRedeemLink", body: data)
+  }
+
+  func willRedeemLink() {
+    sendEvent(withName: "willRedeemLink", body: [:])
+  }
+
   func handleLog(
     level: String,
     scope: String,

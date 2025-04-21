@@ -1,6 +1,7 @@
 import { PaywallInfo } from './PaywallInfo';
 import { SubscriptionStatus } from './SubscriptionStatus';
 import { SuperwallEventInfo } from './SuperwallEventInfo';
+import { RedemptionResult } from './RedemptionResult';
 
 export abstract class SuperwallDelegate {
   abstract subscriptionStatusDidChange(
@@ -15,6 +16,8 @@ export abstract class SuperwallDelegate {
   abstract didPresentPaywall(paywallInfo: PaywallInfo): void;
   abstract paywallWillOpenURL(url: URL): void;
   abstract paywallWillOpenDeepLink(url: URL): void;
+  abstract didRedeemLink(result: RedemptionResult): void;
+  abstract willRedeemLink(): void;
   abstract handleLog(
     level: string,
     scope: string,

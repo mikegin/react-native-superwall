@@ -68,6 +68,13 @@ export class MySuperwallDelegate extends SuperwallDelegate {
     console.log('Paywall will open Deep Link:', url);
   }
 
+  didRedeemLink(result: any): void {
+    console.log('Did redeem link:', result);
+  }
+
+  willRedeemLink(): void {
+    console.log('Will redeem link');
+  }
   handleLog(
     level: string,
     scope: string,

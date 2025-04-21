@@ -29,6 +29,8 @@ class SuperwallReactNative: RCTEventEmitter {
       "didPresentPaywall",
       "paywallWillOpenDeepLink",
       "handleLog",
+      "didRedeemLink",
+      "willRedeemLink",
     ]
   }
 

@@ -17,6 +17,7 @@ import type { PresentationResult } from './public/PresentationResult';
 import { fromJson as paywallResultFromJson } from './public/PaywallResult';
 import { EntitlementsInfo } from './public/EntitlementsInfo';
 import type { LogLevel } from './public/LogLevel';
+import { RedemptionResult } from './public/RedemptionResult';
 const { version } = require('../package.json');
 
 const LINKING_ERROR =
@@ -56,6 +57,7 @@ export {
   PurchaseResultFailed,
   PurchaseResultRestored,
 } from './public/PurchaseResult';
+export { RedemptionResult } from './public/RedemptionResult';
 export { RestorationResult } from './public/RestorationResult';
 export { InterfaceStyle } from './public/InterfaceStyle';
 export { ConfigurationStatus } from './public/ConfigurationStatus';
@@ -248,6 +250,15 @@ export default class Superwall {
     this.eventEmitter.addListener('paywallWillOpenURL', async (data) => {
       const url = new URL(data.url);
       Superwall.delegate?.paywallWillOpenURL(url);
+    });
+
+    this.eventEmitter.addListener('didRedeemLink', (data) => {
+      const result: RedemptionResult = RedemptionResult.fromJson(data.result);
+      Superwall.delegate?.didRedeemLink(result);
+    });
+
+    this.eventEmitter.addListener('willRedeemLink', () => {
+      Superwall.delegate?.willRedeemLink();
     });
   }
 
